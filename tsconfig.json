@@ -16,9 +16,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noEmit": false,
     "experimentalDecorators": true,
-    "declaration": true,
-    "baseUrl": "src",
-    "outDir": "./dist"
+    "baseUrl": "src"
   },
   "exclude": ["node_modules"]
 }

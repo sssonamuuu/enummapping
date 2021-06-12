@@ -1,4 +1,4 @@
-/** @license enummapping v1.0.1
+/** @license enummapping v1.0.2
  * enummapping
  * 
  * Copyright (c) sonamu.liao<liaoqingsong@front-end.com.cn>
