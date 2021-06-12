@@ -1,6 +1,6 @@
 {
   "name": "enummapping",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ts enum object, 带typescript签名的多字段枚举关联对象映射",
   "main": "index.js",
   "typings": "src/index.ts",

@@ -1,5 +1,5 @@
-/** @license enummapping v1.0.3
- * undefined
+/** @license enummapping v1.0.5
+ * enummapping.cjs.js
  * 
  * Copyright (c) sonamu.liao<liaoqingsong@front-end.com.cn>
  * 

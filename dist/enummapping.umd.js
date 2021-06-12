@@ -1,5 +1,5 @@
-/** @license enummapping v1.0.3
- * enummapping
+/** @license enummapping v1.0.5
+ * enummapping.umd.js
  * 
  * Copyright (c) sonamu.liao<liaoqingsong@front-end.com.cn>
  * 

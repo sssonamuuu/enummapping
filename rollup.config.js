@@ -18,10 +18,11 @@ for (const type of ['cjs', 'umd']) {
 
     item.format = type;
 
-    item.file = `dist/${pkg.name}.${type}${env === 'production' ? '.min' : ''}.js`;
+    const filename = `${pkg.name}.${type}${env === 'production' ? '.min' : ''}.js`;
+    item.file = `dist/${filename}`;
 
     item.banner = `/** @license ${pkg.name} v${pkg.version}\n` +
-    ` * ${item.name}\n` +
+    ` * ${filename}\n` +
     ` * \n` +
     ` * Copyright (c) ${pkg.author}\n` +
     ` * \n` +
