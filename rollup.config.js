@@ -2,7 +2,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import { uglify } from 'rollup-plugin-uglify' 
+import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
 const output = [];
@@ -40,10 +40,10 @@ export default {
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
-      extensions: ['.ts']
+      extensions: ['.ts'],
     }),
-    resolve(), 
+    resolve(),
     commonjs(),
-    typescript()
+    typescript(),
   ],
 };
