@@ -93,3 +93,28 @@ gender.male.eq(2); // false
 ``` javascript
 gender[1].in(['male', 'female']); // true
 ```
+
+8. 关于TS类型使用
+
+利用编辑器对 `jsdoc` 的支持，实现类型获取和快速跳转。
+
+``` typescript
+// gender.ts
+import enummapping from 'enummapping';
+
+const gender = enummapping({
+  male: { code: 1, label: '男' },
+  female: { code: 2, label: '女' },
+});
+
+// other.ts
+import gender from 'gender.ts';
+import { GetEnumCodeType } from 'enummapping';
+
+interface Props {
+  /** @see {@link gender} */
+  sex: GetEnumCodeType<typeof gender>;
+}
+```
+
+这样在使用 `sex` 属性时，可以通过编辑器对 `jsdoc` 的支持，实现注释内容点击跳转快速查看 `gender.ts` 的类型声明。
