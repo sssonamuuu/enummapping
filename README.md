@@ -24,9 +24,9 @@ const enumdata = enummapping({
 |:--|:--:|:--:|:--:|:--|
 |`code`|`string` \| `number` |✔️|-|当前枚举项的 `code` 值
 |`label`|`string`|❌|-|当前枚举项的文本值
-|`$sort`|`number`|❌|0|`list` 以及 `map` 方法调用时的排序参数（按照当前值降序）
-|`$exclude`|`boolean`|❌|false|`list` 以及 `map` 方法调用是否忽略该项
-|`[any key]`|`any`|❌|-|可以添加其他任意键值对
+|`$sort`|`number`|❌|0|`$list`、`$map`、`$options` 等方法调用时的排序参数（按照当前值降序）
+|`$exclude`|`boolean`|❌|false|`$list`、`$map`、`$options` 等方法调用是否忽略该项
+|`[any key]`|`any`|❌|-|可以添加其他任意键值对，均支持 `ts` 声明
 
 
 ``` javascript
