@@ -9,7 +9,7 @@ import pkg from './package.json';
 const output = [];
 
 for (const env of ['development', 'production']) {
-  const filename = `${pkg.name}.${env === 'production' ? '.min' : ''}.js`;
+  const filename = `${pkg.name}${env === 'production' ? '.min' : ''}.js`;
 
   /** @type {import('rollup').OutputOptions} */
   const item = {
