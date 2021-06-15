@@ -5,36 +5,37 @@ import typescript from '@rollup/plugin-typescript';
 import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
+/** @type {import('rollup').OutputOptions[]} */
 const output = [];
 
-for (const type of ['cjs', 'umd']) {
-  for (const env of ['development', 'production']) {
-    const item = type === 'cjs' ? { exports: 'default' } : { name: 'enummapping' };
+for (const env of ['development', 'production']) {
+  const filename = `${pkg.name}.${env === 'production' ? '.min' : ''}.js`;
 
-    item.plugins = [];
-    if (env === 'production') {
-      item.plugins.push(uglify());
-    }
-
-    item.format = type;
-
-    const filename = `${pkg.name}.${type}${env === 'production' ? '.min' : ''}.js`;
-    item.file = `dist/${filename}`;
-
-    item.banner = `/** @license ${pkg.name} v${pkg.version}\n` +
+  /** @type {import('rollup').OutputOptions} */
+  const item = {
+    exports: 'default',
+    format: 'cjs',
+    plugins: [],
+    file: `dist/${filename}`,
+    banner: `/** @license ${pkg.name} v${pkg.version}\n` +
     ` * ${filename}\n` +
     ` * \n` +
     ` * Copyright (c) ${pkg.author}\n` +
     ` * \n` +
     ` * This source code is licensed under the MIT license found in the\n` +
     ` * LICENSE file in the root directory of this source tree.\n` +
-    ` */`;
+    ` */`,
+  };
 
-    output.push(item);
+  if (env === 'production') {
+    item.plugins.push(uglify());
   }
+
+  output.push(item);
 }
 
-export default {
+/** @type {import('rollup').RollupOptions} */
+const options = {
   input: './src/index.ts',
   output,
   plugins: [
@@ -48,3 +49,5 @@ export default {
     typescript(),
   ],
 };
+
+export default options;
