@@ -1,7 +1,7 @@
 type DataItemBuildIn = {
   /** 用于获取列表的排序 */
   $sort?: number;
-  /** list/map 是否默认排除 */
+  /** `$list` `$map` `$options` 是否默认排除 */
   $exclude?: boolean;
 };
 
@@ -33,7 +33,7 @@ type Enum<K extends string, C, O> = EnumBuildIn<K, C, O> & EnumKeyRes<K, C, O> &
 export type GetEnumCodeType<T> = T extends Enum<any, infer C, any> ? C : never;
 
 export default function enummapping <K extends string, C = number, O = {}> (data: Record<K, DataItem<C, O>>): Enum<K, C, O> {
-  const buidInKeys: string[] = ['$list', '$map'];
+  const buidInKeys: string[] = ['$list', '$map', '$options'];
   const keyRes: EnumKeyRes<K, C, O> = {} as unknown as EnumKeyRes<K, C, O>;
   const codeRes: EnumCodeRes<K, C, O> = {} as unknown as EnumCodeRes<K, C, O>;
 

@@ -1,7 +1,7 @@
 'use strict';
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./dist/enummapping.min.js');
+  module.exports = require('./dist/cjs/enummapping.min.js');
 } else {
-  module.exports = require('./dist/enummapping.js');
+  module.exports = require('./dist/cjs/enummapping.js');
 }
