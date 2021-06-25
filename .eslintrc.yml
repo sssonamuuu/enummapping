@@ -157,10 +157,10 @@ rules:
     - 2
     - always
     - includeCommonJSModuleExports: true
-  func-style:
-    - 2
-    - declaration
-    - allowArrowFunctions: true
+  # func-style:
+  #   - 2
+  #   - declaration
+  #   - allowArrowFunctions: true
   function-paren-newline:
     - 2
     - multiline
@@ -227,7 +227,7 @@ rules:
   prefer-arrow-callback: 2
   prefer-const: 2
   prefer-numeric-literals: 2
-  prefer-rest-params: 2
+  # prefer-rest-params: 2
   prefer-spread: 2
   prefer-template: 2
   rest-spread-spacing:

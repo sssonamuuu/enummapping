@@ -74,24 +74,24 @@ gender.$map((item, index) => <span key={item.code}>{item.label}</span>)
 <Select options={gender.$options()}></Select>
 ```
 
-5. `enumitem.is(key)`：判断当前项是否是某个枚举 `key`。
+5. `enumitem.$is(key)`：判断当前项是否是某个枚举 `key`。
 
 ``` javascript
-gender[1]?.is('male'); // true
-gender[1]?.is('female'); // false
+gender[1]?.$is('male'); // true
+gender[1]?.$is('female'); // false
 ```
 
-6. `enumitem.eq(code)`：判断当前项是否是某个枚举 `code`。
+6. `enumitem.$eq(code)`：判断当前项是否是某个枚举 `code`。
 
 ``` javascript
-gender.male.eq(1); // true
-gender.male.eq(2); // false
+gender.male.$eq(1); // true
+gender.male.$eq(2); // false
 ```
 
-7. `enumitem.in(keys)`：判断当前项是否在某一系列枚举 `keys` 中。
+7. `enumitem.$in(keys)`：判断当前项是否在某一系列枚举 `keys` 中。
 
 ``` javascript
-gender[1].in(['male', 'female']); // true
+gender[1].$in(['male', 'female']); // true
 ```
 
 8. 关于TS类型使用
