@@ -40,7 +40,7 @@ function enummapping(data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
       var value = data[key];
 
-      if (buidInEnumKeys.indexOf(key) > 0) {
+      if (buidInEnumKeys.indexOf(key) > -1) {
         throw new Error("The built-in property \"".concat(key, "\" cannot be used!"));
       }
 
@@ -66,7 +66,7 @@ function enummapping(data) {
           return k === key;
         },
         "in": function _in(ks) {
-          return ks.indexOf(key) > 0;
+          return ks.indexOf(key) > -1;
         },
         $eq: function $eq(c) {
           return c === value.code;
@@ -75,7 +75,7 @@ function enummapping(data) {
           return k === key;
         },
         $in: function $in(ks) {
-          return ks.indexOf(key) > 0;
+          return ks.indexOf(key) > -1;
         }
       };
       var item = assign(value, itemBuildIn);

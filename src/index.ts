@@ -65,7 +65,7 @@ export default function enummapping <K extends string, C = number, O = {}> (data
     if (Object.prototype.hasOwnProperty.call(data, key)) {
       const value = data[key];
 
-      if (buidInEnumKeys.indexOf(key as any) > 0) {
+      if (buidInEnumKeys.indexOf(key as any) > -1) {
         throw new Error(`The built-in property "${key}" cannot be used!`);
       }
 
@@ -86,10 +86,10 @@ export default function enummapping <K extends string, C = number, O = {}> (data
       const itemBuildIn: EnumItemBuild<K, C> = {
         eq: c => c === value.code,
         is: k => k === key,
-        in: ks => ks.indexOf(key) > 0,
+        in: ks => ks.indexOf(key) > -1,
         $eq: c => c === value.code,
         $is: k => k === key,
-        $in: ks => ks.indexOf(key) > 0,
+        $in: ks => ks.indexOf(key) > -1,
       };
 
       const item: EnumItem<K, C, O> = assign(value, itemBuildIn);
