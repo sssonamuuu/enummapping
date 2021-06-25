@@ -30,6 +30,16 @@ function isArray(obj) {
   return Object.prototype.toString.call(obj) === '[object Array]';
 }
 
+function includes(array, target) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === target) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 var buidInEnumKeys = ['$list', '$map', '$options'];
 var buildInBuildItemKeys = ['is', 'eq', 'in', '$is', '$eq', '$in'];
 function enummapping(data) {
@@ -40,7 +50,7 @@ function enummapping(data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
       var value = data[key];
 
-      if (buidInEnumKeys.indexOf(key) > -1) {
+      if (includes(buidInEnumKeys, key)) {
         throw new Error("The built-in property \"".concat(key, "\" cannot be used!"));
       }
 
@@ -66,7 +76,7 @@ function enummapping(data) {
           return k === key;
         },
         "in": function _in(ks) {
-          return ks.indexOf(key) > -1;
+          return includes(ks, key);
         },
         $eq: function $eq(c) {
           return c === value.code;
@@ -75,7 +85,7 @@ function enummapping(data) {
           return k === key;
         },
         $in: function $in(ks) {
-          return ks.indexOf(key) > -1;
+          return includes(ks, key);
         }
       };
       var item = assign(value, itemBuildIn);

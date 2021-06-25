@@ -17,6 +17,15 @@ function isArray (obj: any) {
   return Object.prototype.toString.call(obj) === '[object Array]';
 }
 
+function includes (array: any[], target: any) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === target) {
+      return true;
+    }
+  }
+  return false;
+}
+
 type EnumData<C, O> = {
   code: C;
   label?: string;
@@ -65,7 +74,7 @@ export default function enummapping <K extends string, C = number, O = {}> (data
     if (Object.prototype.hasOwnProperty.call(data, key)) {
       const value = data[key];
 
-      if (buidInEnumKeys.indexOf(key as any) > -1) {
+      if (includes(buidInEnumKeys, key)) {
         throw new Error(`The built-in property "${key}" cannot be used!`);
       }
 
@@ -86,10 +95,10 @@ export default function enummapping <K extends string, C = number, O = {}> (data
       const itemBuildIn: EnumItemBuild<K, C> = {
         eq: c => c === value.code,
         is: k => k === key,
-        in: ks => ks.indexOf(key) > -1,
+        in: ks => includes(ks, key),
         $eq: c => c === value.code,
         $is: k => k === key,
-        $in: ks => ks.indexOf(key) > -1,
+        $in: ks => includes(ks, key),
       };
 
       const item: EnumItem<K, C, O> = assign(value, itemBuildIn);
