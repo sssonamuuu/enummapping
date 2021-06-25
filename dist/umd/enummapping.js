@@ -1,4 +1,4 @@
-/** @license enummapping v1.0.13
+/** @license enummapping v2.0.0
  * enummapping.js
  * 
  * Copyright (c) sonamu.liao<liaoqingsong@front-end.com.cn>
@@ -45,7 +45,7 @@
     }
 
     var buidInEnumKeys = ['$list', '$map', '$options'];
-    var buildInBuildItemKeys = ['is', 'eq', 'in', '$is', '$eq', '$in'];
+    var buildInBuildItemKeys = ['$is', '$eq', '$in'];
     function enummapping(data) {
       var keyRes = {};
       var codeRes = {};
@@ -73,15 +73,6 @@
           }
 
           var itemBuildIn = {
-            eq: function eq(c) {
-              return c === value.code;
-            },
-            is: function is(k) {
-              return k === key;
-            },
-            "in": function _in(ks) {
-              return includes(ks, key);
-            },
             $eq: function $eq(c) {
               return c === value.code;
             },

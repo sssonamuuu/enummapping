@@ -36,14 +36,8 @@ type EnumData<C, O> = {
 } & O;
 
 type EnumItemBuild<K, C> = {
-  /** @deprecated since version 2.0 */
-  is (key?: K): boolean;
   $is (key?: K): boolean;
-  /** @deprecated since version 2.0 */
-  in (keys: K[]): boolean;
   $in (keys: K[]): boolean;
-  /** @deprecated since version 2.0 */
-  eq (code?: C): boolean;
   $eq (code?: C): boolean;
 };
 
@@ -64,7 +58,7 @@ type Enum<K extends string, C, O> = EnumBuildIn<K, C, O> & EnumKeyRes<K, C, O> &
 export type GetEnumCodeType<T> = T extends Enum<any, infer C, any> ? C : never;
 
 const buidInEnumKeys: (keyof EnumBuildIn<any, any, any>)[] = ['$list', '$map', '$options'];
-const buildInBuildItemKeys: (keyof EnumItemBuild<any, any>)[] = ['is', 'eq', 'in', '$is', '$eq', '$in'];
+const buildInBuildItemKeys: (keyof EnumItemBuild<any, any>)[] = ['$is', '$eq', '$in'];
 
 export default function enummapping <K extends string, C = number, O = {}> (data: Record<K, EnumData<C, O>>): Enum<K, C, O> {
   const keyRes: EnumKeyRes<K, C, O> = {} as unknown as EnumKeyRes<K, C, O>;
@@ -93,9 +87,6 @@ export default function enummapping <K extends string, C = number, O = {}> (data
       }
 
       const itemBuildIn: EnumItemBuild<K, C> = {
-        eq: c => c === value.code,
-        is: k => k === key,
-        in: ks => includes(ks, key),
         $eq: c => c === value.code,
         $is: k => k === key,
         $in: ks => includes(ks, key),
